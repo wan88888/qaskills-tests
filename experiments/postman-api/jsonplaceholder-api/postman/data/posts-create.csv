@@ -1,0 +1,3 @@
+postTitle,postBody,userId,expectedStatus
+REST Assured style post,Payload from CSV data file,1,201
+Another CSV post,Second iteration body,2,201

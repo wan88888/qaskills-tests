@@ -1,0 +1,766 @@
+{
+  "info": {
+    "_postman_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+    "name": "JSONPlaceholder API",
+    "description": "Core REST API tests for JSONPlaceholder using Postman test scripts and Newman.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "if (!pm.variables.get('requestId')) {",
+          "  pm.variables.set('requestId', pm.variables.replaceIn('{{$guid}}'));",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Smoke",
+      "item": [
+        {
+          "name": "GET /posts - collection smoke",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Returns 100 posts', function () { pm.expect(pm.response.json()).to.have.lengthOf(100); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /comments - collection smoke",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/comments"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Returns 500 comments', function () { pm.expect(pm.response.json()).to.have.lengthOf(500); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /todos - collection smoke",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/todos"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Returns 200 todos', function () { pm.expect(pm.response.json()).to.have.lengthOf(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /users - collection smoke",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/users"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Returns 10 users', function () { pm.expect(pm.response.json()).to.have.lengthOf(10); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /albums - collection smoke",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/albums"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Returns 100 albums', function () { pm.expect(pm.response.json()).to.have.lengthOf(100); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /photos - collection smoke",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/photos"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Returns 5000 photos', function () { pm.expect(pm.response.json()).to.have.lengthOf(5000); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "GET /posts/1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Post has required fields', function () { pm.expect(json).to.have.property('id', 1); pm.expect(json).to.have.property('title'); pm.expect(json).to.have.property('body'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /posts/1/comments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1/comments"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Comments belong to post 1', function () { pm.response.json().forEach(function (c) { pm.expect(c.postId).to.eql(1); }); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /posts/9999 - not found",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/9999"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 404', function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /posts - create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Postman API test post\",\n  \"body\": \"Created via Newman\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const timestamp = Date.now();",
+                  "pm.variables.set('requestId', pm.variables.replaceIn('{{$guid}}'));",
+                  "pm.variables.set('uniqueTitle', 'Postman post ' + timestamp);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 201', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Created post has id 101', function () { pm.expect(json.id).to.eql(101); pm.expect(json.title).to.eql('Postman API test post'); });",
+                  "pm.test('Save created post id', function () { pm.environment.set('createdPostId', json.id); pm.environment.set('createdPostTitle', json.title); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PUT /posts/1 - replace",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Replaced title\",\n  \"body\": \"Replaced body\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Post replaced', function () { const json = pm.response.json(); pm.expect(json.id).to.eql(1); pm.expect(json.title).to.eql('Replaced title'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PATCH /posts/1 - partial update",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Patched via Postman\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Title patched', function () { pm.expect(pm.response.json().title).to.eql('Patched via Postman'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "DELETE /posts/1",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "GET /comments?postId=1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/comments?postId=1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Filtered comments for post 1', function () { pm.response.json().forEach(function (c) { pm.expect(c.postId).to.eql(1); }); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /comments/1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/comments/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Comment id is 1', function () { pm.expect(pm.response.json().id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /comments - create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/comments",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"postId\": 1,\n  \"name\": \"API Tester\",\n  \"email\": \"tester@example.com\",\n  \"body\": \"Comment from Postman\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.test('Comment created', function () { const json = pm.response.json(); pm.expect(json.id).to.eql(501); pm.expect(json.email).to.eql('tester@example.com'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Todos",
+      "item": [
+        {
+          "name": "GET /todos?userId=1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/todos?userId=1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Todos belong to user 1', function () { pm.response.json().forEach(function (t) { pm.expect(t.userId).to.eql(1); }); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /todos/1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/todos/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('Todo id is 1', function () { pm.expect(pm.response.json().id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /todos - create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/todos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"title\": \"Learn Postman API testing\",\n  \"completed\": false\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 201', function () { pm.response.to.have.status(201); });",
+                  "pm.test('Todo created', function () { const json = pm.response.json(); pm.expect(json.id).to.eql(201); pm.expect(json.completed).to.eql(false); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PATCH /todos/1 - complete",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/todos/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"completed\": true\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Todo marked completed', function () { pm.expect(pm.response.json().completed).to.eql(true); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "GET /users/1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/users/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('User profile fields', function () { const u = pm.response.json(); pm.expect(u.username).to.eql('Bret'); pm.expect(u.address.city).to.be.a('string'); pm.expect(u.company.name).to.be.a('string'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /users/1/posts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/users/1/posts"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('User posts relation', function () { pm.response.json().forEach(function (p) { pm.expect(p.userId).to.eql(1); }); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /users/1/todos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/users/1/todos"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('User todos relation', function () { pm.response.json().forEach(function (t) { pm.expect(t.userId).to.eql(1); }); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /users/1/albums",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/users/1/albums"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Content-Type is JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
+                  "pm.test('Response time is acceptable', function () { var threshold = parseInt(pm.environment.get('responseTimeThreshold') || '5000'); pm.expect(pm.response.responseTime).to.be.below(threshold); });",
+                  "pm.test('User albums relation', function () { pm.response.json().forEach(function (a) { pm.expect(a.userId).to.eql(1); }); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Driven",
+      "item": [
+        {
+          "name": "POST /posts - CSV data driven",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const payload = {",
+                  "  title: pm.iterationData.get('postTitle'),",
+                  "  body: pm.iterationData.get('postBody'),",
+                  "  userId: parseInt(pm.iterationData.get('userId'), 10)",
+                  "};",
+                  "pm.request.body = { mode: \"raw\", raw: JSON.stringify(payload) };"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status from CSV', function () { pm.response.to.have.status(parseInt(pm.iterationData.get('expectedStatus'), 10)); });",
+                  "pm.test('Created post matches CSV title', function () { pm.expect(pm.response.json().title).to.eql(pm.iterationData.get('postTitle')); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://jsonplaceholder.typicode.com"
+    }
+  ]
+}

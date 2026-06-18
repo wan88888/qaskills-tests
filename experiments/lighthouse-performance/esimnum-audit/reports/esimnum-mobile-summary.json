@@ -1,0 +1,89 @@
+{
+  "url": "https://esimnum.com/",
+  "formFactor": "mobile",
+  "fetchTime": "2026-06-18T10:16:56.921Z",
+  "categories": [
+    {
+      "id": "performance",
+      "score": 97,
+      "passed": true,
+      "threshold": 70
+    },
+    {
+      "id": "accessibility",
+      "score": 96,
+      "passed": true,
+      "threshold": 90
+    },
+    {
+      "id": "best-practices",
+      "score": 100,
+      "passed": true,
+      "threshold": 90
+    },
+    {
+      "id": "seo",
+      "score": 100,
+      "passed": true,
+      "threshold": 90
+    }
+  ],
+  "coreWebVitals": {
+    "fcp": "1.9 s",
+    "lcp": "2.3 s",
+    "tbt": "20 ms",
+    "cls": "0",
+    "si": "2.6 s",
+    "tti": "16.0 s"
+  },
+  "opportunities": [
+    {
+      "id": "server-response-time",
+      "title": "Initial server response time was short",
+      "savings": "Root document took 160 ms"
+    },
+    {
+      "id": "uses-responsive-images",
+      "title": "Properly size images",
+      "savings": "Est savings of 247 KiB"
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "color-contrast",
+      "title": "Background and foreground colors do not have a sufficient contrast ratio."
+    },
+    {
+      "id": "uses-long-cache-ttl",
+      "title": "Serve static assets with an efficient cache policy",
+      "displayValue": "1 resource found"
+    },
+    {
+      "id": "dom-size",
+      "title": "Avoid an excessive DOM size",
+      "displayValue": "1,021 elements"
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "displayValue": "Est savings of 4 KiB"
+    },
+    {
+      "id": "image-delivery-insight",
+      "title": "Improve image delivery",
+      "displayValue": "Est savings of 55 KiB"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests"
+    }
+  ],
+  "accessibilityIssues": [
+    {
+      "id": "color-contrast",
+      "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+      "score": 0
+    }
+  ],
+  "seoIssues": []
+}

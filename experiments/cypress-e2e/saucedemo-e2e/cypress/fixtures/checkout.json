@@ -1,0 +1,12 @@
+{
+  "customer": {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "postalCode": "94105"
+  },
+  "products": {
+    "backpack": "Sauce Labs Backpack",
+    "bikeLight": "Sauce Labs Bike Light",
+    "boltTshirt": "Sauce Labs Bolt T-Shirt"
+  }
+}

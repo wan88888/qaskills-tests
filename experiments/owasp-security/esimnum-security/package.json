@@ -1,0 +1,15 @@
+{
+  "name": "@qaskills-tests/owasp-security-esimnum",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "scan": "playwright test --grep @scan",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.3"
+  }
+}

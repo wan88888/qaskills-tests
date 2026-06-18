@@ -1,0 +1,146 @@
+{
+  "info": {
+    "name": "JSONPlaceholder Workflows",
+    "description": "E2E workflow with variable chaining across requests.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Post CRUD Workflow",
+      "item": [
+        {
+          "name": "Step 1 - Create Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Workflow post\",\n  \"body\": \"Chained via pm.environment.set\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Created', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "pm.environment.set('createdPostId', json.id);",
+                  "pm.environment.set('createdPostTitle', json.title);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Step 2 - Read Post 1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Readable post', function () { pm.response.to.have.status(200); pm.expect(pm.response.json().id).to.eql(1); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Step 3 - Patch Post",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"{{updatedPostTitle}}\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Patched', function () { pm.response.to.have.status(200); });",
+                  "pm.environment.set('updatedTitle', pm.response.json().title);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Step 4 - Verify chained title",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Stored title from workflow', function () { pm.expect(pm.environment.get('updatedTitle')).to.eql(pm.environment.get('updatedPostTitle')); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Step 5 - Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Deleted', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

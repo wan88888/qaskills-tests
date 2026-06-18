@@ -1,0 +1,14 @@
+{
+  "name": "@qaskills-tests/cypress-e2e-saucedemo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:headed": "cypress run --headed"
+  },
+  "devDependencies": {
+    "cypress": "^14.3.2",
+    "typescript": "^5.8.3"
+  }
+}

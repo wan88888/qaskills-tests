@@ -1,0 +1,14 @@
+{
+  "name": "@qaskills-tests/postman-api-jsonplaceholder",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "bash postman/scripts/run-tests.sh",
+    "test:workflow": "newman run postman/collections/jsonplaceholder-workflows.postman_collection.json -e postman/environments/jsonplaceholder.postman_environment.json -r cli,json --reporter-json-export test-results/workflow-results.json",
+    "test:report": "newman run postman/collections/jsonplaceholder-api.postman_collection.json -e postman/environments/jsonplaceholder.postman_environment.json -r htmlextra --reporter-htmlextra-export test-results/report.html"
+  },
+  "devDependencies": {
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}

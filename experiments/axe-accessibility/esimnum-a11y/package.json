@@ -1,0 +1,17 @@
+{
+  "name": "@qaskills-tests/axe-accessibility-esimnum",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report",
+    "scan": "playwright test --grep @scan"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.0",
+    "axe-core": "^4.10.3",
+    "typescript": "^5.8.3"
+  }
+}

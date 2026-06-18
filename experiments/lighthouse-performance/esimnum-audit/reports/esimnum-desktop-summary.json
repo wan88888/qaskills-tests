@@ -1,0 +1,88 @@
+{
+  "url": "https://esimnum.com/",
+  "formFactor": "desktop",
+  "fetchTime": "2026-06-18T10:16:33.346Z",
+  "categories": [
+    {
+      "id": "performance",
+      "score": 99,
+      "passed": true,
+      "threshold": 70
+    },
+    {
+      "id": "accessibility",
+      "score": 96,
+      "passed": true,
+      "threshold": 90
+    },
+    {
+      "id": "best-practices",
+      "score": 100,
+      "passed": true,
+      "threshold": 90
+    },
+    {
+      "id": "seo",
+      "score": 100,
+      "passed": true,
+      "threshold": 90
+    }
+  ],
+  "coreWebVitals": {
+    "fcp": "0.4 s",
+    "lcp": "0.5 s",
+    "tbt": "0 ms",
+    "cls": "0",
+    "si": "1.2 s",
+    "tti": "0.5 s"
+  },
+  "opportunities": [
+    {
+      "id": "server-response-time",
+      "title": "Initial server response time was short",
+      "savings": "Root document took 170 ms"
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "color-contrast",
+      "title": "Background and foreground colors do not have a sufficient contrast ratio."
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "title": "Elements with visible text labels do not have matching accessible names."
+    },
+    {
+      "id": "uses-long-cache-ttl",
+      "title": "Serve static assets with an efficient cache policy",
+      "displayValue": "1 resource found"
+    },
+    {
+      "id": "dom-size",
+      "title": "Avoid an excessive DOM size",
+      "displayValue": "1,021 elements"
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "displayValue": "Est savings of 4 KiB"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests"
+    }
+  ],
+  "accessibilityIssues": [
+    {
+      "id": "color-contrast",
+      "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+      "score": 0
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "title": "Elements with visible text labels do not have matching accessible names.",
+      "score": 0
+    }
+  ],
+  "seoIssues": []
+}

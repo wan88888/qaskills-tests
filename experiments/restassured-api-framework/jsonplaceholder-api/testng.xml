@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="JSONPlaceholder API Suite" verbose="1">
+    <test name="CRUD and Smoke Tests">
+        <classes>
+            <class name="com.qaskills.jsonplaceholder.tests.crud.TestResourcesSmoke"/>
+            <class name="com.qaskills.jsonplaceholder.tests.crud.TestPostsCrud"/>
+            <class name="com.qaskills.jsonplaceholder.tests.crud.TestCommentsCrud"/>
+            <class name="com.qaskills.jsonplaceholder.tests.crud.TestTodosCrud"/>
+            <class name="com.qaskills.jsonplaceholder.tests.crud.TestUsersRead"/>
+        </classes>
+    </test>
+</suite>
