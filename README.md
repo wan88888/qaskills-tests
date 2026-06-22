@@ -35,31 +35,66 @@ cd experiments/<skill-name>/<task-name>
 # 例：「用 playwright-e2e skill，在 experiments/playwright-e2e/saucedemo-e2e 下编写测试」
 ```
 
+## 共用测试目标
+
+多个试验复用同一被测对象，便于横向对比框架与 skill：
+
+| 目标 | 用途 | 相关试验 |
+|------|------|----------|
+| [saucedemo.com](https://www.saucedemo.com) | Web E2E 多框架对比 | Playwright、Cypress、Selenium、Puppeteer |
+| [JSONPlaceholder](https://jsonplaceholder.typicode.com) | API 测试 + 列表接口压测 | Playwright API、REST Assured、Postman、k6、JMeter |
+| [esimnum.com](https://esimnum.com/) | 可访问性 / 性能 / 安全审计链 | axe、Lighthouse、OWASP、Bug 报告 |
+| **swaglabsmobileapp**（`com.swaglabsmobileapp`） | 移动端核心流程 E2E | Appium、Maestro |
+
+**移动端共用前置条件：** 设备 `adb devices` 可见，且已从 [sample-app-mobile Releases](https://github.com/saucelabs/sample-app-mobile/releases) 手动安装 APK（`Android.SauceLabs.Mobile.Sample.app.2.7.1.apk`）。详情见各移动试验目录 README。
+
 ## 已有试验
 
-| Skill | 任务 | 目录 | 说明 |
-|-------|------|------|------|
-| `playwright-e2e` | saucedemo-e2e | [experiments/playwright-e2e/saucedemo-e2e](./experiments/playwright-e2e/saucedemo-e2e/) | Sauce Demo 全链路 E2E（17 用例） |
-| `cypress-e2e` | saucedemo-e2e | [experiments/cypress-e2e/saucedemo-e2e](./experiments/cypress-e2e/saucedemo-e2e/) | Sauce Demo 全链路 E2E（17 用例） |
-| `playwright-api` | jsonplaceholder-api | [experiments/playwright-api/jsonplaceholder-api](./experiments/playwright-api/jsonplaceholder-api/) | JSONPlaceholder 核心 API（29 用例） |
-| `restassured-api-framework` | jsonplaceholder-api | [experiments/restassured-api-framework/jsonplaceholder-api](./experiments/restassured-api-framework/jsonplaceholder-api/) | JSONPlaceholder REST Assured（24 用例） |
-| `selenium-java` | saucedemo-e2e | [experiments/selenium-java/saucedemo-e2e](./experiments/selenium-java/saucedemo-e2e/) | Sauce Demo Selenium Java（16 用例） |
-| `postman-api` | jsonplaceholder-api | [experiments/postman-api/jsonplaceholder-api](./experiments/postman-api/jsonplaceholder-api/) | JSONPlaceholder Postman/Newman（30 请求） |
-| `puppeteer-automation` | saucedemo-e2e | [experiments/puppeteer-automation/saucedemo-e2e](./experiments/puppeteer-automation/saucedemo-e2e/) | Sauce Demo Puppeteer E2E（17 用例） |
-| `axe-accessibility` | esimnum-a11y | [experiments/axe-accessibility/esimnum-a11y](./experiments/axe-accessibility/esimnum-a11y/) | eSIMNum 可访问性审计（WCAG 2.1 AA、键盘导航、Cookie 弹窗、子页面） |
-| `lighthouse-performance` | esimnum-audit | [experiments/lighthouse-performance/esimnum-audit](./experiments/lighthouse-performance/esimnum-audit/) | eSIMNum Lighthouse 审计（Performance / A11y / SEO，桌面 + 移动） |
-| `owasp-security` | esimnum-security | [experiments/owasp-security/esimnum-security](./experiments/owasp-security/esimnum-security/) | eSIMNum OWASP Top 10 安全扫描（被动/非侵入） |
-| `bug-report-writing` | esimnum-bug-report | [experiments/bug-report-writing/esimnum-bug-report](./experiments/bug-report-writing/esimnum-bug-report/) | eSIMNum 综合 Bug 报告（A11y + Lighthouse + 安全，15 条） |
-| `k6-performance` | jsonplaceholder-api | [experiments/k6-performance/jsonplaceholder-api](./experiments/k6-performance/jsonplaceholder-api/) | JSONPlaceholder 6 类资源列表接口压测（smoke / load / stress） |
-| `jmeter-load` | jsonplaceholder-api | [experiments/jmeter-load/jsonplaceholder-api](./experiments/jmeter-load/jsonplaceholder-api/) | JSONPlaceholder 6 类资源列表接口压测（JMeter smoke / load） |
-| `appium-mobile` | swaglabsmobileapp | [experiments/appium-mobile/swaglabsmobileapp](./experiments/appium-mobile/swaglabsmobileapp/) | swaglabsmobileapp 核心流程 E2E（1 用例） |
-| `maestro-mobile` | swaglabsmobileapp | [experiments/maestro-mobile/swaglabsmobileapp](./experiments/maestro-mobile/swaglabsmobileapp/) | swaglabsmobileapp 核心流程 Maestro flow（1 条） |
+按类型分组；目录链接见下方 [Prompt 记录](#skill-验证-prompt-记录)。
 
-**eSIMNum 综合 Bug 报告：** [experiments/bug-report-writing/esimnum-bug-report/BUG-REPORT.md](./experiments/bug-report-writing/esimnum-bug-report/BUG-REPORT.md)
+### Web E2E（saucedemo.com）
+
+| Skill | 任务 | 说明 |
+|-------|------|------|
+| `playwright-e2e` | saucedemo-e2e | 全链路 E2E（17 用例） |
+| `cypress-e2e` | saucedemo-e2e | 全链路 E2E（17 用例） |
+| `selenium-java` | saucedemo-e2e | Selenium Java（16 用例） |
+| `puppeteer-automation` | saucedemo-e2e | Puppeteer E2E（17 用例） |
+
+### API（JSONPlaceholder）
+
+| Skill | 任务 | 说明 |
+|-------|------|------|
+| `playwright-api` | jsonplaceholder-api | 核心 API（29 用例） |
+| `restassured-api-framework` | jsonplaceholder-api | REST Assured（24 用例） |
+| `postman-api` | jsonplaceholder-api | Postman / Newman（30 请求） |
+
+### 移动（swaglabsmobileapp）
+
+| Skill | 任务 | 说明 |
+|-------|------|------|
+| `appium-mobile` | swaglabsmobileapp | 核心流程 E2E（1 用例） |
+| `maestro-mobile` | swaglabsmobileapp | 核心流程 Maestro flow（1 条） |
+
+### 质量审计（esimnum.com）
+
+| Skill | 任务 | 说明 |
+|-------|------|------|
+| `axe-accessibility` | esimnum-a11y | WCAG 2.1 AA、键盘导航、Cookie 弹窗、子页面 |
+| `lighthouse-performance` | esimnum-audit | Performance / A11y / SEO（桌面 + 移动） |
+| `owasp-security` | esimnum-security | OWASP Top 10 被动扫描 |
+| `bug-report-writing` | esimnum-bug-report | 综合 Bug 报告（15 条） → [BUG-REPORT.md](./experiments/bug-report-writing/esimnum-bug-report/BUG-REPORT.md) |
+
+### 性能（JSONPlaceholder）
+
+| Skill | 任务 | 说明 |
+|-------|------|------|
+| `k6-performance` | jsonplaceholder-api | 6 类资源列表接口（smoke / load / stress） |
+| `jmeter-load` | jsonplaceholder-api | 6 类资源列表接口（JMeter smoke / load） |
 
 ## Skill 验证 Prompt 记录
 
-在 Cursor 中调用 skill 时使用的**原始 Prompt**。每次使用 skill 完成试验后，须将 Prompt **追加**到本列表（含后续追问、补充指令）。
+在 Cursor 中调用 skill 时使用的**原始 Prompt**（仅记录首次发起 skill 的指令）。每次新试验完成后，将 Prompt **追加**到本列表。**目录链接集中在此表，避免与上方试验表重复。**
 
 | # | Prompt | 产物目录 |
 |---|--------|----------|
@@ -94,11 +129,54 @@ cd experiments/<skill-name>/<task-name>
 
 ## 运行某个试验
 
-进入对应任务目录后执行该目录内的命令，例如：
+进入对应任务目录，**以该目录 README 为准**。常见类型示例：
+
+**Web E2E（Node + Playwright）**
 
 ```bash
 cd experiments/playwright-e2e/saucedemo-e2e
+npm install && npx playwright install chromium && npm test
+```
+
+**Web E2E（Java + Selenium）**
+
+```bash
+cd experiments/selenium-java/saucedemo-e2e
+mvn test
+```
+
+**API（Postman / Newman）**
+
+```bash
+cd experiments/postman-api/jsonplaceholder-api
+npm install && npm test
+```
+
+**性能（k6）**
+
+```bash
+cd experiments/k6-performance/jsonplaceholder-api
+npm run smoke    # 或 load / stress
+```
+
+**移动（Appium，需已安装 swaglabsmobileapp）**
+
+```bash
+cd experiments/appium-mobile/swaglabsmobileapp
 npm install
-npx playwright install chromium
+ANDROID_UDID=<device-id> ANDROID_PLATFORM_VERSION=12 npm test
+```
+
+**移动（Maestro，需已安装 swaglabsmobileapp）**
+
+```bash
+cd experiments/maestro-mobile/swaglabsmobileapp
 npm test
+```
+
+**质量审计（axe / Lighthouse / OWASP）**
+
+```bash
+cd experiments/axe-accessibility/esimnum-a11y   # 或 lighthouse-performance / owasp-security
+# 见各目录 README 中的审计命令
 ```
