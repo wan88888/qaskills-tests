@@ -1,0 +1,58 @@
+appId: com.swaglabsmobileapp
+env:
+  FIRST_NAME: ${FIRST_NAME || "Jane"}
+  LAST_NAME: ${LAST_NAME || "Doe"}
+  POSTAL_CODE: ${POSTAL_CODE || "94105"}
+  PRODUCT_NAME: ${PRODUCT_NAME || "Sauce Labs Backpack"}
+tags:
+  - smoke
+  - critical-path
+---
+- runFlow: subflows/login.yaml
+
+- scrollUntilVisible:
+    element: ${PRODUCT_NAME}
+    direction: DOWN
+    timeout: 20000
+- tapOn: "ADD TO CART"
+- tapOn: "test-Cart"
+- extendedWaitUntil:
+    visible: "YOUR CART"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "CHECKOUT"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "CHECKOUT"
+
+- tapOn: "First Name"
+- inputText: ${FIRST_NAME}
+- tapOn: "Last Name"
+- inputText: ${LAST_NAME}
+- tapOn: "Zip/Postal Code"
+- inputText: ${POSTAL_CODE}
+- hideKeyboard
+- scrollUntilVisible:
+    element: "CONTINUE"
+    direction: DOWN
+    timeout: 10000
+- tapOn: "CONTINUE"
+
+- extendedWaitUntil:
+    visible: "CHECKOUT: OVERVIEW"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "FINISH"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "FINISH"
+
+- extendedWaitUntil:
+    visible: "CHECKOUT: COMPLETE!"
+    timeout: 20000
+- scrollUntilVisible:
+    element: "BACK HOME"
+    direction: DOWN
+    timeout: 10000
+- tapOn: "BACK HOME"
+- assertVisible: "PRODUCTS"

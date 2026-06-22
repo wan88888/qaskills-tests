@@ -1,0 +1,10 @@
+{
+  "name": "@qaskills-tests/maestro-mobile-swaglabsmobileapp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "maestro test .maestro/critical-path.yaml",
+    "test:all": "maestro test .maestro/",
+    "studio": "maestro studio"
+  }
+}

@@ -50,6 +50,10 @@ cd experiments/<skill-name>/<task-name>
 | `lighthouse-performance` | esimnum-audit | [experiments/lighthouse-performance/esimnum-audit](./experiments/lighthouse-performance/esimnum-audit/) | eSIMNum Lighthouse 审计（Performance / A11y / SEO，桌面 + 移动） |
 | `owasp-security` | esimnum-security | [experiments/owasp-security/esimnum-security](./experiments/owasp-security/esimnum-security/) | eSIMNum OWASP Top 10 安全扫描（被动/非侵入） |
 | `bug-report-writing` | esimnum-bug-report | [experiments/bug-report-writing/esimnum-bug-report](./experiments/bug-report-writing/esimnum-bug-report/) | eSIMNum 综合 Bug 报告（A11y + Lighthouse + 安全，15 条） |
+| `k6-performance` | jsonplaceholder-api | [experiments/k6-performance/jsonplaceholder-api](./experiments/k6-performance/jsonplaceholder-api/) | JSONPlaceholder 6 类资源列表接口压测（smoke / load / stress） |
+| `jmeter-load` | jsonplaceholder-api | [experiments/jmeter-load/jsonplaceholder-api](./experiments/jmeter-load/jsonplaceholder-api/) | JSONPlaceholder 6 类资源列表接口压测（JMeter smoke / load） |
+| `appium-mobile` | swaglabsmobileapp | [experiments/appium-mobile/swaglabsmobileapp](./experiments/appium-mobile/swaglabsmobileapp/) | swaglabsmobileapp 核心流程 E2E（1 用例） |
+| `maestro-mobile` | swaglabsmobileapp | [experiments/maestro-mobile/swaglabsmobileapp](./experiments/maestro-mobile/swaglabsmobileapp/) | swaglabsmobileapp 核心流程 Maestro flow（1 条） |
 
 **eSIMNum 综合 Bug 报告：** [experiments/bug-report-writing/esimnum-bug-report/BUG-REPORT.md](./experiments/bug-report-writing/esimnum-bug-report/BUG-REPORT.md)
 
@@ -71,6 +75,10 @@ cd experiments/<skill-name>/<task-name>
 | 10 | （续 #8）可以的 — 补充键盘导航测试、Cookie 弹窗专项扫描，并对 `/destinations`、`/help` 页面做同样检测 | [experiments/axe-accessibility/esimnum-a11y](./experiments/axe-accessibility/esimnum-a11y/) |
 | 11 | 使用 owasp-security skill，对 https://esimnum.com/ 进行安全测试 | [experiments/owasp-security/esimnum-security](./experiments/owasp-security/esimnum-security/) |
 | 12 | 使用 bug-report-writing skill，把之前 https://esimnum.com/ 网站可访问性测试、Lighthouse 测试、安全测试发现的问题整理成 1 份 Bug 报告 | [experiments/bug-report-writing/esimnum-bug-report](./experiments/bug-report-writing/esimnum-bug-report/) |
+| 13 | 使用 k6-performance skill，对 JSONPlaceholder 核心接口进行性能测试 | [experiments/k6-performance/jsonplaceholder-api](./experiments/k6-performance/jsonplaceholder-api/) |
+| 14 | 使用 jmeter-load skill，对 JSONPlaceholder 核心接口进行性能测试 | [experiments/jmeter-load/jsonplaceholder-api](./experiments/jmeter-load/jsonplaceholder-api/) |
+| 15 | 使用 appium-mobile skill，为 swaglabsmobileapp 编写 E2E 测试 | [experiments/appium-mobile/swaglabsmobileapp](./experiments/appium-mobile/swaglabsmobileapp/) |
+| 16 | 使用 maestro-mobile skill，为 swaglabsmobileapp 编写 E2E 测试 | [experiments/maestro-mobile/swaglabsmobileapp](./experiments/maestro-mobile/swaglabsmobileapp/) |
 
 **推荐 Prompt 模板（复制后改 skill 名、目标、目录）：**
 

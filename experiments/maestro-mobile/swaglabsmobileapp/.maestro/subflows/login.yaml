@@ -1,0 +1,19 @@
+appId: com.swaglabsmobileapp
+env:
+  USERNAME: ${USERNAME || "standard_user"}
+  PASSWORD: ${PASSWORD || "secret_sauce"}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Username"
+    timeout: 30000
+- tapOn: "Username"
+- inputText: ${USERNAME}
+- tapOn: "Password"
+- inputText: ${PASSWORD}
+- hideKeyboard
+- tapOn: "LOGIN"
+- extendedWaitUntil:
+    visible: "PRODUCTS"
+    timeout: 20000

@@ -1,0 +1,10 @@
+{
+  "name": "@qaskills-tests/jmeter-load-jsonplaceholder",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate": "python3 scripts/generate-test-plan.py",
+    "smoke": "bash scripts/run-smoke.sh",
+    "load": "bash scripts/run-load.sh"
+  }
+}
