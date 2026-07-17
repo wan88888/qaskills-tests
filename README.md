@@ -80,6 +80,7 @@ cd experiments/<skill-name>/<task-name>
 
 | Skill | 任务 | 说明 |
 |-------|------|------|
+| `seo` (claude-seo) | esimnum-audit | eSIMNum 全站 SEO 审计（Health 71） → [experiments/seo/esimnum-audit](./experiments/seo/esimnum-audit/) |
 | `axe-accessibility` | esimnum-a11y | WCAG 2.1 AA、键盘导航、Cookie 弹窗、子页面 |
 | `lighthouse-performance` | esimnum-audit | Performance / A11y / SEO（桌面 + 移动） |
 | `owasp-security` | esimnum-security | OWASP Top 10 被动扫描 |
@@ -114,6 +115,7 @@ cd experiments/<skill-name>/<task-name>
 | 14 | 使用 jmeter-load skill，对 JSONPlaceholder 核心接口进行性能测试 | [experiments/jmeter-load/jsonplaceholder-api](./experiments/jmeter-load/jsonplaceholder-api/) |
 | 15 | 使用 appium-mobile skill，为 swaglabsmobileapp 编写 E2E 测试 | [experiments/appium-mobile/swaglabsmobileapp](./experiments/appium-mobile/swaglabsmobileapp/) |
 | 16 | 使用 maestro-mobile skill，为 swaglabsmobileapp 编写 E2E 测试 | [experiments/maestro-mobile/swaglabsmobileapp](./experiments/maestro-mobile/swaglabsmobileapp/) |
+| 17 | 使用 seo skill 审计 https://esimnum.com/ | [experiments/seo/esimnum-audit](./experiments/seo/esimnum-audit/) |
 
 **推荐 Prompt 模板（复制后改 skill 名、目标、目录）：**
 

@@ -1,5 +1,6 @@
 # Dependencies & artifacts in any experiment workspace
 **/node_modules/
+**/.venv/
 **/test-results/
 **/playwright-report/
 **/playwright/.auth/
